@@ -1,27 +1,28 @@
-# README
+# Profit Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails web-app to track investment and profit.
 
-Things you may want to cover:
 
-- Ruby version
+## Installation
 
-- System dependencies
+#### MacOs:
+Install Homebrew
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
-- Configuration
+Install [RVM](https://rvm.io/)
+```bash
+\curl -sSL https://get.rvm.io | bash -s stable --rails
+```
 
-- Database creation
+Install Node, Yarn, and [PostgresSQL](https://wiki.postgresql.org/wiki/Homebrew)
+```bash
+brew install node
+brew install yarn
+brew install postgres@16
+```
 
-- Database initialization
-
-- How to run the test suite
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
 
 Notes:
 MVC architecture:
