@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
+<div class="d-flex justify-content-end my-3">
+  <%= link_to "Back to items", items_path, class: "btn btn-warning my-auto" %>
+</div>
 <%= render @item %>
-
-<div>
-  <%= link_to "Edit this item", edit_item_path(@item) %> |
-  <%= link_to "Back to items", items_path %>
-
-  <%= button_to "Destroy this item", @item, method: :delete %>
+<div class="d-flex">
+  <%= link_to "Edit this item", edit_item_path(@item), class: "btn btn-primary my-auto me-2" %>
+  <%= button_to "Destroy this item", @item, method: :delete, class: "btn btn-danger my-2" %>
 </div>

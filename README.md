@@ -35,3 +35,4 @@ Controller - one controller for each webpage
 Commands:
 rails generate controller home index
 rails g scaffold items product:string product_link:string bought_price:integer current_value:integer
+rails db:migrate

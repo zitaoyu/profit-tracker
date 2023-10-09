@@ -1,9 +1,6 @@
-<h1>New product</h1>
-
-<%= render "form", item: @item %>
-
-<br>
-
-<div>
-  <%= link_to "Back to items", items_path %>
+<div class="d-flex justify-content-between my-3">
+  <h1>New product</h1>
+  <%= link_to "Back to items", items_path, class: "btn btn-warning my-auto" %>
 </div>
+<%= render "form", item: @item %>
+<br>
