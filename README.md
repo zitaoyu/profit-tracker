@@ -36,3 +36,8 @@ Commands:
 rails generate controller home index
 rails g scaffold items product:string product_link:string bought_price:integer current_value:integer
 rails db:migrate
+
+rails generate devise:install
+rails g devise:views
+rails generate devise user
+rails db:migrate

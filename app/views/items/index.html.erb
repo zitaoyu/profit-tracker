@@ -1,42 +1,51 @@
-<div class="d-flex justify-content-between my-3">
-  <h1>Product List</h1>
-  <%= link_to "Add New Product", new_item_path, class:"btn btn-success my-auto"%>
-</div>
-<div id="items">
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Product Name</th>
-        <th>Product Link</th>
-        <th>Purchased Price</th>
-        <th>Current Value</th>
-        <th>Profit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @items.each do |item| %>
-        <tr class="<%= item.current_value - item.bought_price > 0 ? 'table-success' : (item.current_value - item.bought_price < 0 ? 'table-danger' : 'table-secondary') %>">
-          <td><%= link_to item.product, item %></td>
-          <td>
-            <% unless item.product_link.nil? || item.product_link.empty? %>
-              <a href="<%= item.product_link %>" target="_blank">Link to Product</a>
-            <% else %>
-              <%= item.product_link %>
-            <% end %>
-          </td>
-          <td><%= item.bought_price %></td>
-          <td><%= item.current_value %></td>
-          <td><%= (item.current_value - item.bought_price) %></td>
+<% if user_signed_in? %>
+  <div class="d-flex justify-content-between my-3">
+    <h1>Product List</h1>
+    <%= link_to "Add New Product", new_item_path, class:"btn btn-success my-auto"%>
+  </div>
+  <div id="items">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Product Link</th>
+          <th>Purchased Price</th>
+          <th>Current Value</th>
+          <th>Profit</th>
         </tr>
-      <% end %>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="2">Total</td>
-        <td><%= @items.sum(&:bought_price) %></td>
-        <td><%= @items.sum(&:current_value) %></td>
-        <td><%= @items.sum { |item| item.current_value - item.bought_price } %></td>
-      </tr>
-    </tfoot>
-  </table>
-</div>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <% if item.user == current_user %>
+            <tr class="<%= item.current_value - item.bought_price > 0 ? 'table-success' : (item.current_value - item.bought_price < 0 ? 'table-danger' : 'table-secondary') %>">
+              <td><%= link_to item.product, item %></td>
+              <td>
+                <% unless item.product_link.nil? || item.product_link.empty? %>
+                  <a href="<%= item.product_link %>" target="_blank">Link to Product</a>
+                <% else %>
+                  <%= item.product_link %>
+                <% end %>
+              </td>
+              <td><%= item.bought_price %></td>
+              <td><%= item.current_value %></td>
+              <td><%= (item.current_value - item.bought_price) %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">Total</td>
+          <td><%= @items.select { |item| item.user == current_user }.sum(&:bought_price) %></td>
+          <td><%= @items.select { |item| item.user == current_user }.sum(&:current_value) %></td>
+          <td><%= @items.select { |item| item.user == current_user }.sum { |item| item.current_value - item.bought_price } %></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+<% else %>
+  <h1>Home</h1>
+  <p>A Profit Tracker for Your Inventory.</p>
+  <%# <%= link_to 'Sign In', new_user_session_path, class: "btn btn-primary my-4" %>
+  <%# <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-primary my-4" %>
+<% end %>
