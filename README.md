@@ -1,6 +1,26 @@
 # Profit Tracker
 
-A Ruby on Rails web-app to track investment and profit.
+Profit Tracker is a Ruby on Rails web application designed to help you efficiently manage your investments and track profits. Whether you're a seasoned investor or just starting, this app provides a user-friendly platform to monitor your financial progress.
+
+## Key Features:
+
+- **User Registration**: Users can create accounts to gain access to personalized investment tracking.
+
+- **Investment Tracking**: Add, edit, and remove investments from your portfolio. Keep tabs on various assets and their performance.
+
+- **Profit Summaries**: Our app calculates and displays your total profits or losses, giving you a clear overview of your financial journey.
+
+- **Security**: We've implemented **Devise** for user authentication to ensure the privacy and security of your financial data.
+
+- **Technologies**: The app utilizes a stack that includes **Bootstrap** for a modern, responsive design, and it supports both **SQLite** and **PostgreSQL** databases for optimal data management.
+
+### Log in page:
+
+![screenshot 1](app/assets/images/screenshot-1.png)
+
+### Example:
+
+![screenshot 2](app/assets/images/screenshot-2.png)
 
 ## Installation
 
@@ -26,7 +46,13 @@ brew install yarn
 brew install postgres@16
 ```
 
-Notes:
+Host Server Locally, visit http://localhost:3000
+
+```bash
+rails s
+```
+
+<!-- Notes:
 MVC architecture:
 Model - handles database (Postgresql, SQLite, MySQL)
 View - webpages
@@ -40,4 +66,4 @@ rails db:migrate
 rails generate devise:install
 rails g devise:views
 rails generate devise user
-rails db:migrate
+rails db:migrate -->
